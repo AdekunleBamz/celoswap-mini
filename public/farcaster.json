@@ -1,0 +1,11 @@
+{
+  "name": "CeloSwap Mini",
+  "version": "1.0.0",
+  "description": "Quick token swaps on Celo with minimal fees",
+  "icon": "https://your-domain.com/icon.png",
+  "splash": "https://your-domain.com/splash.png",
+  "url": "https://your-domain.com",
+  "homeUrl": "https://your-domain.com",
+  "splashBackgroundColor": "#0A0E13",
+  "themeColor": "#35D07F"
+}
