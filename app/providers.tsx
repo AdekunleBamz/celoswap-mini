@@ -5,7 +5,7 @@ import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit'
 import { WagmiProvider } from 'wagmi'
 import { celo, celoAlfajores } from 'wagmi/chains'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import { metaMaskWallet, walletConnectWallet, injectedWallet } from '@rainbow-me/rainbowkit/wallets'
+import { walletConnectWallet } from '@rainbow-me/rainbowkit/wallets'
 
 const config = getDefaultConfig({
   appName: process.env.NEXT_PUBLIC_APP_NAME || 'CeloSwap Mini',
@@ -16,7 +16,7 @@ const config = getDefaultConfig({
   wallets: [
     {
       groupName: 'Recommended',
-      wallets: [metaMaskWallet, walletConnectWallet],
+      wallets: [walletConnectWallet],
     },
   ],
   ssr: true,
