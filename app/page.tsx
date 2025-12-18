@@ -7,6 +7,7 @@ import { parseUnits, formatUnits } from 'viem'
 import { celoSwapABI, erc20ABI } from '@/lib/abis'
 import { tokenList, Token } from '@/lib/tokens'
 import TransactionHistory from '@/components/TransactionHistory'
+import PriceChart from '@/components/PriceChart'
 
 export default function Home() {
   const { address, isConnected } = useAccount()
@@ -301,6 +302,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      {/* Price Chart */}
+      <PriceChart />
 
       {/* Transaction History */}
       {isConnected && <TransactionHistory />}
