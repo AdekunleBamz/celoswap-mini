@@ -91,6 +91,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 MIT License - see LICENSE file for details
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history
+
 ## Built for Celo Competition
 
 This project is built for the Celo blockchain competition.
