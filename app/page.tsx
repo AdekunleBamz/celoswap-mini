@@ -297,6 +297,32 @@ export default function Home() {
 
         {/* Footer */}
         <div className="text-center">
+          <div className="flex justify-center gap-6 mb-2">
+            <a
+              href="https://celo.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-500 hover:text-celo-green transition-colors font-display"
+            >
+              Celo
+            </a>
+            <a
+              href="https://docs.celo.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-500 hover:text-celo-green transition-colors font-display"
+            >
+              Docs
+            </a>
+            <a
+              href="https://github.com/AdekunleBamz/celoswap-mini"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-500 hover:text-celo-green transition-colors font-display"
+            >
+              GitHub
+            </a>
+          </div>
           <p className="text-xs text-gray-500 font-display">
             Built for Celo • Powered by CeloSwap Protocol
           </p>
