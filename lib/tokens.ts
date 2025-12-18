@@ -31,4 +31,10 @@ export const tokenList: Token[] = [
     address: process.env.NEXT_PUBLIC_CREAL_ADDRESS || '0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787',
     decimals: 18,
   },
+  {
+    symbol: 'USDC',
+    name: 'USD Coin',
+    address: '0xcebA9300f2b948710d2653dD7B07f33A8B32118C',
+    decimals: 6,
+  },
 ]
