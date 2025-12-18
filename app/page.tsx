@@ -6,6 +6,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { parseUnits, formatUnits } from 'viem'
 import { celoSwapABI, erc20ABI } from '@/lib/abis'
 import { tokenList, Token } from '@/lib/tokens'
+import TransactionHistory from '@/components/TransactionHistory'
 
 export default function Home() {
   const { address, isConnected } = useAccount()
@@ -300,6 +301,9 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+      {/* Transaction History */}
+      {isConnected && <TransactionHistory />}
     </main>
   )
 }
