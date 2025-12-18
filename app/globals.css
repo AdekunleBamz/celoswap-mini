@@ -6,7 +6,6 @@
 
 @layer base {
   * {
-    @apply border border-slate-800;
   }
   body {
     @apply bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white font-body;
