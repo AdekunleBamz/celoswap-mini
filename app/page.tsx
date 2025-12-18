@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { parseUnits, formatUnits } from 'viem'
-import { celoSwapABI } from '@/lib/abis'
+import { celoSwapABI, erc20ABI } from '@/lib/abis'
 import { tokenList, Token } from '@/lib/tokens'
 
 export default function Home() {
@@ -16,6 +16,27 @@ export default function Home() {
   const [showSettings, setShowSettings] = useState(false)
 
   const contractAddress = process.env.NEXT_PUBLIC_CELOSWAP_CONTRACT as `0x${string}`
+
+  // Get balances
+  const { data: balanceIn } = useReadContract({
+    address: tokenIn.address as `0x${string}`,
+    abi: erc20ABI,
+    functionName: 'balanceOf',
+    args: [address as `0x${string}`],
+    query: {
+      enabled: !!address,
+    },
+  })
+
+  const { data: balanceOut } = useReadContract({
+    address: tokenOut.address as `0x${string}`,
+    abi: erc20ABI,
+    functionName: 'balanceOf',
+    args: [address as `0x${string}`],
+    query: {
+      enabled: !!address,
+    },
+  })
 
   // Get quote
   const { data: quoteData } = useReadContract({
@@ -167,6 +188,9 @@ export default function Home() {
                 className="flex-1 bg-transparent text-2xl font-display font-semibold outline-none"
               />
             </div>
+            <p className="text-xs text-gray-400 mt-1 font-display">
+              Balance: {balanceIn ? parseFloat(formatUnits(balanceIn as bigint, tokenIn.decimals)).toFixed(4) : '0'} {tokenIn.symbol}
+            </p>
           </div>
 
           {/* Flip Button */}
@@ -203,6 +227,9 @@ export default function Home() {
                 {parseFloat(amountOut).toFixed(4)}
               </div>
             </div>
+            <p className="text-xs text-gray-400 mt-1 font-display">
+              Balance: {balanceOut ? parseFloat(formatUnits(balanceOut as bigint, tokenOut.decimals)).toFixed(4) : '0'} {tokenOut.symbol}
+            </p>
           </div>
 
           {/* Quote Info */}
@@ -224,6 +251,12 @@ export default function Home() {
                 <span>Minimum Received</span>
                 <span className="text-white">
                   {(parseFloat(amountOut) * (1 - parseFloat(slippage) / 100)).toFixed(6)} {tokenOut.symbol}
+                </span>
+              </div>
+              <div className="flex justify-between text-gray-400">
+                <span>$ Equivalent</span>
+                <span className="text-white">
+                  ~${(parseFloat(amountIn) * (tokenIn.symbol === 'CELO' ? 0.5 : tokenIn.symbol === 'cUSD' ? 1 : tokenIn.symbol === 'cEUR' ? 1.08 : 1)).toFixed(2)}
                 </span>
               </div>
             </div>
